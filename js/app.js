@@ -8,7 +8,7 @@ vidfusion.config(function($stateProvider, $urlRouteProvider) {
             contorller: "LoginController"
         })
         .state("secure", {
-            url: "/secure"
+            url: "/secure",
             template: "templates/secure.html",
             controller: "SecureController"
         });
@@ -44,5 +44,5 @@ vidfusion.controller("LoginController", function($scope) {
 });
 
 vidfusion.controller("SecureController", function($scope) {
-    $scope.username =
+    //$scope.username =
 });
