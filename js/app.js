@@ -1,10 +1,11 @@
 var vidfusion = angular.module("vidfusion", ["ui.router"]);
+var ref = new Firebase("https://blistering-fire-2832.firebaseio.com/");
 
 vidfusion.config(function($stateProvider, $urlRouteProvider) {
     $stateProvider
-        .state("login", {
-            url: "/login",
-            template: "templates/login.html",
+        .state("landingPage", {
+            url: "/landing",
+            template: "templates/landing.html",
             contorller: "LoginController"
         })
         .state("secure", {
@@ -16,31 +17,17 @@ vidfusion.config(function($stateProvider, $urlRouteProvider) {
 });
 
 vidfusion.controller("LoginController", function($scope) {
-    $scope.client_id = "1037941277521-25nd37qbdsb5daqlm1fcsh7fub418sfs.apps.googleusercontent.com";
-    var scopes = ['https://www.googleapis.com/auth/youtube'];
-
-    $scope.googleLogin = function() {
-        gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuthResult);
-    };
-
-    function handleAuthResult(authResult) {
-      if (authResult && !authResult.error) {
-        loadAPI();
-      } else {
-
-      }
-    }
-
-    function handleAuthClick(event) {
-      gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
-      return false;
-    }
-
-    function loadAPI() {
-        gapi.client.load("youtube", "v3", function() {
-            console.log("Youtube Loaded Succssfully");
-        });
-    }
+    // Login with Google using Firebase OAuth
+    $scope.login = function() {
+	    ref.authWithOAuthPopup("google", function(error, authData) {
+		if(!error) {
+			console.log("Login Successful");
+			$scope.user = authData;
+		} else {
+			console.log("Error with Google Authentication");
+		}
+	});
+}
 });
 
 vidfusion.controller("SecureController", function($scope) {
