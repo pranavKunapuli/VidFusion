@@ -8,12 +8,9 @@ As it stands, however, there is no easy way for dancers to analyze or compare th
 ## The Product
 VidFusion strives to serve **two** specific purposes:
 
-1. Offer a time-based commenting system for targeted choreography analysis
-
+1. Offer a time-based commenting system for targeted choreography analysis  
 2. Facilitate side-by-side playing of videos for comparison of performance
 
-_Created by Pranav Kunapuli_
-
-_University of Pennsylvania Class of 2017_
-
+_Created by Pranav Kunapuli_  
+_University of Pennsylvania Class of 2017_  
 _School of Engineering and Applied Sciences_
