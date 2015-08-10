@@ -1,21 +1,21 @@
-var vidfusion = angular.module("vidfusion", []);
+var vidfusion = angular.module("vidfusion", ["ngRoute"]);
 
 vidfusion.factory("Firebase", function() {
     var ref = new Firebase("https://blistering-fire-2832.firebaseio.com/");
     return ref;
 });
 
-vidfusion.config(function($routeProvider) {
+vidfusion.config(["$routeProvider", function($routeProvider) {
     $routeProvider.
         when("/", {
-            templateUrl:"templates/landing.html",
+            templateUrl:"app/templates/landing.html",
             controller:"LoginController"
         }).
         when("/home", {
-            templateUrl:"templates/homepage.html",
+            templateUrl:"app/templates/homepage.html",
             controller:"HomePageController"
         }).
         otherwise({
             redirectTo: "/"
         });
-});
+}]);

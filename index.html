@@ -11,6 +11,9 @@
         <!-- Local Scripts -->
         <script type="text/javascript" src="app.js"></script>
         <script type="text/javascript" src="app/controllers/login.js">
+        <script type="text/javascript" src="app/controllers/homepage.js">
+
+        </script>
 
         </script>
 
@@ -30,7 +33,6 @@
               //window.setTimeout(checkAuth,1);
             }
         </script>
-        <h1>Welcome Page</h1>
-        <button type="button" name="login" ng-click="login()">Login w/ Google</button>
+        <div ng-view></div>
     </body>
 </html>
