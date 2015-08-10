@@ -1,4 +1,4 @@
-angular.module("vidfusion").controller("LoginController", function($scope, Firebase) {
+angular.module("vidfusion").controller("LoginController", function($scope, $location, Firebase) {
     $scope.client_id = "1037941277521-25nd37qbdsb5daqlm1fcsh7fub418sfs.apps.googleusercontent.com";
     var scopes = ['https://www.googleapis.com/auth/youtube'];
     var ref = Firebase;
@@ -40,6 +40,7 @@ angular.module("vidfusion").controller("LoginController", function($scope, Fireb
                 });
 
                 googleLogin();
+                $location.path("/homepage");
     		} else {
     			console.log("Error with Google Authentication");
     		}
