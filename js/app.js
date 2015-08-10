@@ -20,14 +20,14 @@ vidfusion.controller("LoginController", function($scope) {
     var scopes = ['https://www.googleapis.com/auth/youtube'];
 
     $scope.googleLogin = function() {
-        gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuthResult);
+        gapi.auth.authorize({client_id: $scope.clientId, scope: scopes, immediate: true}, handleAuthResult);
     };
 
     function handleAuthResult(authResult) {
       if (authResult && !authResult.error) {
         loadAPI();
       } else {
-
+        console.log("authResult returned an error")
       }
     }
 
@@ -38,7 +38,7 @@ vidfusion.controller("LoginController", function($scope) {
 
     function loadAPI() {
         gapi.client.load("youtube", "v3", function() {
-            console.log("Youtube Loaded Succssfully");
+            console.log("Youtube Loaded Successfully");
         });
     }
 });
