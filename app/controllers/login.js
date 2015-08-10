@@ -1,6 +1,7 @@
-angular.module("vidfusion").controller("LoginController", function($scope) {
+angular.module("vidfusion").controller("LoginController", function($scope, Firebase) {
     $scope.client_id = "1037941277521-25nd37qbdsb5daqlm1fcsh7fub418sfs.apps.googleusercontent.com";
     var scopes = ['https://www.googleapis.com/auth/youtube'];
+    var ref = Firebase;
 
     $scope.googleLogin = function() {
         gapi.auth.authorize({client_id: $scope.clientId, scope: scopes, immediate: true}, handleAuthResult);
@@ -31,10 +32,10 @@ angular.module("vidfusion").controller("LoginController", function($scope) {
     		if(!error) {
     			console.log("Login Successful");
     			$scope.user = authData;
+                console.log(JSON.stringify(authData, null, 2));
     		} else {
     			console.log("Error with Google Authentication");
     		}
-        }
-	});
-
+        });
+	};
 });
