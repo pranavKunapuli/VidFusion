@@ -11,7 +11,8 @@ angular.module("vidfusion").controller("LoginController", function($scope, $loca
       if (authResult && !authResult.error) {
         loadAPI();
       } else {
-        console.log("authResult returned an error")
+        console.log("authResult returned an error");
+        console.log(JSON.stringify(authResult, null, 2));
       }
     }
 
