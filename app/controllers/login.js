@@ -3,7 +3,7 @@ angular.module("vidfusion").controller("LoginController", function($scope, Fireb
     var scopes = ['https://www.googleapis.com/auth/youtube'];
     var ref = Firebase;
 
-    $scope.googleLogin = function() {
+    var googleLogin = function() {
         gapi.auth.authorize({client_id: $scope.clientId, scope: scopes, immediate: true}, handleAuthResult);
     };
 
@@ -12,7 +12,7 @@ angular.module("vidfusion").controller("LoginController", function($scope, Fireb
         loadAPI();
       } else {
         console.log("authResult returned an error")
-      }
+      } 
     }
 
     function handleAuthClick(event) {
@@ -32,11 +32,16 @@ angular.module("vidfusion").controller("LoginController", function($scope, Fireb
     		if(!error) {
     			console.log("Login Successful");
                 console.log(JSON.stringify(authData, null, 2));
+                var uid = authData.google.cachedUserProfile.id;
+                var users = ref.child("Users");
+
+                users.once()
                 ref.child("Users").push({
                     "given_name": authData.google.cachedUserProfile.given_name,
                     "family_name": authData.google.cachedUserProfile.family_name,
                     "id": authData.google.cachedUserProfile.id
-                })
+                });
+                googleLogin();
     		} else {
     			console.log("Error with Google Authentication");
     		}
