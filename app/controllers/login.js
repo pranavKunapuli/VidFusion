@@ -12,7 +12,7 @@ angular.module("vidfusion").controller("LoginController", function($scope, Fireb
         loadAPI();
       } else {
         console.log("authResult returned an error")
-      } 
+      }
     }
 
     function handleAuthClick(event) {
@@ -35,7 +35,7 @@ angular.module("vidfusion").controller("LoginController", function($scope, Fireb
                 var uid = authData.google.cachedUserProfile.id;
                 var users = ref.child("Users");
 
-                users.once()
+                //users.once()
                 ref.child("Users").push({
                     "given_name": authData.google.cachedUserProfile.given_name,
                     "family_name": authData.google.cachedUserProfile.family_name,
