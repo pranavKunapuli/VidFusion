@@ -2,10 +2,10 @@
 <html ng-app="vidfusion">
     <head>
         <!-- AngularJS -->
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+        <script type="text/javascript" src="lib/angular-1.4.3/angular.js"></script>
+        <script type="text/javascript" src="lib/angular-1.4.3/angular-route.js"></script>
 
-        <!-- Angular UI Router -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+
         <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
         <script type="text/javascript" src="js/app.js"></script>
 
@@ -21,7 +21,7 @@
     <body>
         <script type="text/javascript">
             function handleClientLoad() {
-              gapi.client.setApiKey("AIzaSyADy_IQF0Ertv8l-gVB49GztR9VfTmjjKQ");
+               gapi.client.setApiKey("AIzaSyADy_IQF0Ertv8l-gVB49GztR9VfTmjjKQ");
               //window.setTimeout(checkAuth,1);
             }
         </script>
