@@ -1,10 +1,11 @@
 var vidfusion = angular.module("vidfusion", ["ui.router"]);
+var ref = new Firebase("https://blistering-fire-2832.firebaseio.com/");
 
 vidfusion.config(function($stateProvider, $urlRouteProvider) {
     $stateProvider
-        .state("login", {
-            url: "/login",
-            template: "templates/login.html",
+        .state("landingPage", {
+            url: "/landing",
+            template: "templates/landing.html",
             contorller: "LoginController"
         })
         .state("secure", {
@@ -41,6 +42,19 @@ vidfusion.controller("LoginController", function($scope) {
             console.log("Youtube Loaded Successfully");
         });
     }
+
+    // Login with Google using Firebase OAuth
+    $scope.login = function() {
+	    ref.authWithOAuthPopup("google", function(error, authData) {
+    		if(!error) {
+    			console.log("Login Successful");
+    			$scope.user = authData;
+    		} else {
+    			console.log("Error with Google Authentication");
+    		}
+        }
+	});
+
 });
 
 vidfusion.controller("SecureController", function($scope) {
