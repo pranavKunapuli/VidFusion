@@ -6,8 +6,10 @@ Videography is also a vital tool when it comes to standardizing and cleaning a p
 As it stands, however, there is no easy way for dancers to analyze or compare their videos online. Video hosting sites like YouTube allow for comments and annotation, but the comments are static (i.e. not tied to time markers), and annotations (which are tied to time markers) are clunky and often get in the way of the video. SoundCloud, however, has a commenting system where the comments are linked to a time marker in the music playing. The solution, then, was simple. Combine these two systems.
 
 ## The Product
-VidFusion strives to serve **two** specific purposes
+VidFusion strives to serve **two** specific purposes:
+
 1. Offer a time-based commenting system for targeted choreography analysis
+
 2. Facilitate side-by-side playing of videos for comparison of performance
 
 _Created by Pranav Kunapuli_
