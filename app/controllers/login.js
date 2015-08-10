@@ -31,16 +31,14 @@ angular.module("vidfusion").controller("LoginController", function($scope, Fireb
 	    ref.authWithOAuthPopup("google", function(error, authData) {
     		if(!error) {
     			console.log("Login Successful");
-                console.log(JSON.stringify(authData, null, 2));
+                //console.log(JSON.stringify(authData, null, 2));
                 var uid = authData.google.cachedUserProfile.id;
-                var users = ref.child("Users");
-
-                //users.once()
                 ref.child("Users").push({
                     "given_name": authData.google.cachedUserProfile.given_name,
                     "family_name": authData.google.cachedUserProfile.family_name,
                     "id": authData.google.cachedUserProfile.id
                 });
+
                 googleLogin();
     		} else {
     			console.log("Error with Google Authentication");
