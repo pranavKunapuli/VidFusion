@@ -3,7 +3,7 @@ angular.module("vidfusion").controller("LoginController", function($scope, $loca
     	"client_id": "1037941277521-25nd37qbdsb5daqlm1fcsh7fub418sfs.apps.googleusercontent.com",
     	"scope": 'https://www.googleapis.com/auth/youtube',
     	"immediate": true
-    }
+    };
     
     var ref = Firebase;
 
