@@ -1,6 +1,6 @@
 angular.module("vidfusion").controller("LoginController", function($scope, $location, $route, Firebase) {
     var config = {
-    	"client_id": "1037941277521-25nd37qbdsb5daqlm1fcsh7fub418sfs.apps.googleusercontent.com",
+    	"client_id": "1037941277521-1tc48qa8m44vrjj4qeoqh4oasc6oov7i.apps.googleusercontent.com",
     	"scope": 'https://www.googleapis.com/auth/youtube',
     	"immediate": true
     };
