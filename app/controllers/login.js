@@ -1,10 +1,10 @@
 angular.module("vidfusion").controller("LoginController", function($scope, $location, $route, Firebase) {
-    var client_id = "1037941277521-25nd37qbdsb5daqlm1fcsh7fub418sfs.apps.googleusercontent.com";
+    var clientId = "1037941277521-25nd37qbdsb5daqlm1fcsh7fub418sfs.apps.googleusercontent.com";
     var scopes = ['https://www.googleapis.com/auth/youtube'];
     var ref = Firebase;
 
     var googleLogin = function() {
-        gapi.auth.authorize({client_id: client_id, scope: scopes, immediate: true}, handleAuthResult);
+        gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuthResult);
     };
 
     function handleAuthResult(authResult) {
@@ -17,7 +17,7 @@ angular.module("vidfusion").controller("LoginController", function($scope, $loca
     }
 
     function handleAuthClick(event) {
-      gapi.auth.authorize({client_id: client_id, scope: scopes, immediate: false}, handleAuthResult);
+      gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
       return false;
     }
 
