@@ -3,24 +3,16 @@ angular.module("vidfusion").controller("LoginController", function($scope, $loca
     var OAUTH2_CLIENT_ID = "1037941277521-1tc48qa8m44vrjj4qeoqh4oasc6oov7i.apps.googleusercontent.com";
     var OAUTH2_SCOPES = ["https://www.googleapis.com/auth/youtube"];
 
-    $scope.googleLogin = function() {
-        gapi.auth.authorize({
-        	client_id: clientId,
-        	scope: scopes,
-        	immediate: true
-        }, handleAuthResult);
-    };
-
     // Attempt the immediate OAuth 2.0 client flow as soon as the page loads.
     // If the currently logged-in Google Account has previously authorized
     // the client specified as the OAUTH2_CLIENT_ID, then the authorization
     // succeeds with no user intervention. Otherwise, it fails and the
     // user interface that prompts for authorization needs to display.
-    $scope.checkAuth = function() {
+    var checkAuth = function() {
       gapi.auth.authorize({
         client_id: OAUTH2_CLIENT_ID,
         scope: OAUTH2_SCOPES,
-        immediate: true
+        immediate: false
       }, handleAuthResult);
     }
 
@@ -55,7 +47,7 @@ angular.module("vidfusion").controller("LoginController", function($scope, $loca
                     "id": authData.google.cachedUserProfile.id
                 });
 
-                googleLogin();
+                checkAuth();
                 $location.path("/home");
                 $route.reload();
     		} else {
