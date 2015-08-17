@@ -1,34 +1,45 @@
 angular.module("vidfusion").controller("LoginController", function($scope, $location, $route, Firebase) {
-    var config = {
-    	"client_id": "1037941277521-1tc48qa8m44vrjj4qeoqh4oasc6oov7i.apps.googleusercontent.com",
-    	"scope": 'https://www.googleapis.com/auth/youtube',
-    	"immediate": true
-    };
-    
     var ref = Firebase;
+    var OAUTH2_CLIENT_ID = "1037941277521-1tc48qa8m44vrjj4qeoqh4oasc6oov7i.apps.googleusercontent.com";
+    var OAUTH2_SCOPES = ["https://www.googleapis.com/auth/youtube"];
 
-    var googleLogin = function() {
-        gapi.auth.authorize(config, handleAuthResult);
+    $scope.googleLogin = function() {
+        gapi.auth.authorize({
+        	client_id: clientId,
+        	scope: scopes,
+        	immediate: true
+        }, handleAuthResult);
     };
 
+    // Attempt the immediate OAuth 2.0 client flow as soon as the page loads.
+    // If the currently logged-in Google Account has previously authorized
+    // the client specified as the OAUTH2_CLIENT_ID, then the authorization
+    // succeeds with no user intervention. Otherwise, it fails and the
+    // user interface that prompts for authorization needs to display.
+    $scope.checkAuth = function() {
+      gapi.auth.authorize({
+        client_id: OAUTH2_CLIENT_ID,
+        scope: OAUTH2_SCOPES,
+        immediate: true
+      }, handleAuthResult);
+    }
+
+    // Handle the result of a gapi.auth.authorize() call.
     function handleAuthResult(authResult) {
       if (authResult && !authResult.error) {
-        loadAPI();
+        loadAPIClientInterfaces();
       } else {
-        console.log("authResult returned an error");
         console.log(JSON.stringify(authResult, null, 2));
       }
     }
 
-    function handleAuthClick(event) {
-      gapi.auth.authorize(config, handleAuthResult);
-      return false;
-    }
-
-    function loadAPI() {
-        gapi.client.load("youtube", "v3", function() {
-            console.log("Youtube Loaded Successfully");
-        });
+    // Load the client interfaces for the YouTube Analytics and Data APIs, which
+    // are required to use the Google APIs JS client. More info is available at
+    // http://code.google.com/p/google-api-javascript-client/wiki/GettingStarted#Loading_the_Client
+    function loadAPIClientInterfaces() {
+      gapi.client.load('youtube', 'v3', function() {
+        console.log("YouTube API Successfully Loaded");
+      });
     }
 
     // Login with Google using Firebase OAuth
