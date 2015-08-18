@@ -1,0 +1,6 @@
+<h1>Welcome to the Homepage</h1> </br>
+<button title="button" name="searchUploads" ng-click="requestUserUploads()">Request Uploads</button>
+<h3>Listing out the last 10 uploads:</h3>
+<ul ng-repeat="video in uploads">
+    <li>{{ video.id }}: {{ video.title }}</li>
+</ul>
