@@ -48,6 +48,7 @@ angular.module("vidfusion").controller("LoginController", function($scope, $loca
                 });
 
                 checkAuth();
+                loadAPIClientInterfaces();
                 $location.path("/home");
                 $route.reload();
     		} else {
